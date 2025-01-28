@@ -4,11 +4,11 @@ import java.util.Scanner;
 public final class InputUtils {
     private static final Scanner IN = new Scanner(System.in);
 
-    private InputUtils() {} // Запрет создания экземпляров
+    private InputUtils() {}
 
     public static int readTarget() {
         int target = IN.nextInt();
-        IN.nextLine(); // Очистка буфера
+        IN.nextLine();
         return target;
     }
 

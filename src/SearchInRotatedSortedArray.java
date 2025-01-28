@@ -2,46 +2,41 @@ import java.util.Arrays;
 
 public class SearchInRotatedSortedArray {
     public static void main(String[] args) {
+        int target = InputUtils.readTarget();
         int[] nums = InputUtils.readNumbers();
-        int target = nums[nums.length - 1];
         SearchInRotatedSortedArray sirsa = new SearchInRotatedSortedArray();
-        sirsa.search(nums, target);
+        System.out.println(sirsa.search(nums, target));
     }
 
     public int search(int[] nums, int target) {
-        int start = nums[0];
-        int end = nums[nums.length - 1];
+        int left = 0;
+        int right = nums.length - 1;
 
-        if (nums.length % 2 == 0) {
-            int pivot = nums[nums.length / 2];
-            for (int i = start; i <= end; i++) {
-                if (nums[i] < pivot) {
-                    while (nums[i] < pivot) {
-                        i++;
-                        int [] part1 = Arrays.stream(nums).toArray();
-                    }
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                return mid;
+            }
+
+            // Левая половина отсортирована
+            if (nums[left] <= nums[mid]) {
+                if (nums[left] <= target && target < nums[mid]) {
+                    right = mid - 1;
                 } else {
-                    while (nums[i] > pivot) {
-                        i++;
-                        int [] part2 = Arrays.stream(nums).toArray();
-                    }
+                    left = mid + 1;
                 }
             }
-        } else {
-            int pivot = nums[(nums.length-1) / 2];
-            for (int i = start; i <= end; i++) {
-                if (nums[i] < pivot) {
-                    while (nums[i] < pivot) {
-                        i++;
-                        int [] part3 = Arrays.stream(nums).toArray();
-                    }
-                }else {
-                    while (nums[i] > pivot) {
-                        i++;
-                        int [] part4 = Arrays.stream(nums).toArray();
-                    }
+            // Правая половина отсортирована
+            else {
+                if (nums[mid] < target && target <= nums[right]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
                 }
             }
         }
+
+        return -1;
     }
 }
