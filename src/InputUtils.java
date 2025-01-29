@@ -7,21 +7,7 @@ public final class InputUtils {
     private InputUtils() {}
 
     public static int readTarget() {
-        int target = IN.nextInt();
-        IN.nextLine();
-        return target;
-    }
-
-    static int readUtilIntegerOne() {
-        int number = IN.nextInt();
-        IN.nextLine();
-        return number;
-    }
-
-    static int readUtilIntegerTwo() {
-        int number = IN.nextInt();
-        IN.nextLine();
-        return number;
+        return IN.nextInt();
     }
 
     public static int[] readNumbers() {
