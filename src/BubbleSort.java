@@ -19,20 +19,11 @@ public class BubbleSort {
         }
     }
 
-//    static void bs(int[] ints){
-////        границы
-//        int left, right;
-//// внешний цикл определ€ет границы итерации
-//        for(right = ints.length - 1; right > 0; right--){
-//// внутренний цикл
-//            for(left = 0; left < right; left++){
-//// ключевой момент сортировки пузырьком - сравниваем соседние элементы друг с другом, если 1 > 2 - swap
-//                if(ints[left] > ints[left+1]){
-//                    swap(ints, left, left + 1);
-//                }
-//            }
-//        }
-//        System.out.println(Arrays.toString(ints));
+//        int out, in;
+//        for(out=nElems-1; out>1; out--) // ¬нешний цикл (обратный)
+//            for(in=0; in<out; in++) // ¬нутренний цикл (пр€мой)
+//                if( a[in] > a[in+1] ) // ѕор€док нарушен?
+//                    swap(in, in+1); // ѕомен€ть местами
 //    }
 
     public static void swap(int[] nums, int one, int two) {
