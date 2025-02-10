@@ -10,6 +10,10 @@ public final class InputUtils {
         return IN.nextInt();
     }
 
+    public static String readTargetString() {
+        return IN.nextLine();
+    }
+
     public static int[] readNumbers() {
         return Arrays.stream(IN.nextLine().split(" "))
                 .mapToInt(Integer::parseInt)
