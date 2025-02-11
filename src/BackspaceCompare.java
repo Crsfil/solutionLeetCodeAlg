@@ -1,30 +1,49 @@
-import java.util.Arrays;
 
 public class BackspaceCompare {
     public static void main(String[] args) {
         String s = InputUtils.readTargetString();
         String t = InputUtils.readTargetString();
-        backspaceCompare(s, t);
+        System.out.println(backspaceCompare(s, t));
     }
 
     public static boolean backspaceCompare(String s, String t) {
-        int countBackspaceF = 0;
-        int countBackspaceS = 0;
-        char[] firstString = s.toCharArray();
-        char[] secondString = t.toCharArray();
-        for(int i = firstString.length - 1; i > 0; i--) {
-            if (firstString[i] == '#'){
-                countBackspaceF+=2;
-                firstString[i] = firstString[i-countBackspaceF];
-
+        int cursor1 = s.length() - 1;
+        int cursor2 = t.length() - 1;
+        int skip1 = 0;
+        int skip2 = 0;
+        while (cursor1 >= 0 || cursor2 >= 0) {
+            while (cursor1 >= 0) {
+                if (s.charAt(cursor1) == '#') {
+                    skip1++;
+                    cursor1--;
+                } else if (skip1 > 0) {
+                    skip1--;
+                    cursor1--;
+                } else {
+                    break;
+                }
             }
-        }
-        System.out.println(Arrays.toString(firstString));
-        for(char c : secondString){
-            if (c == '#'){
-                countBackspaceS+=2;
+            while (cursor2 >= 0) {
+                if (t.charAt(cursor2) == '#') {
+                    skip2++;
+                    cursor2--;
+                } else if (skip2 > 0) {
+                    skip2--;
+                    cursor2--;
+                } else {
+                    break;
+                }
             }
+            if (cursor1 >= 0 && cursor2 >= 0) {
+                if (s.charAt(cursor1) != t.charAt(cursor2)) {
+                    return false;
+                }
+            } else if (cursor1 >= 0 || cursor2 >= 0) {
+                return false;
+            }
+            cursor1--;
+            cursor2--;
         }
-        return false;
+        return true;
     }
 }
