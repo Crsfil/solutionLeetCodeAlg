@@ -1,5 +1,4 @@
-class Solution {
-
+public class LinkedListCycle141 {
     public class ListNode {
         int val;
         ListNode next;

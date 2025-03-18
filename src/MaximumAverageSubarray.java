@@ -6,19 +6,16 @@ public class MaximumAverageSubarray {
     }
 
     static double findMaxAverage(int[] nums, int k) {
-        int end = k;
-        double temp = 0;
-        double sum = 0;
-        for (int i = 0; i < k; i++) {
-            temp += nums[i];
+        int begin = 0;
+        double windowState = 0;
+        double result = -Double.MAX_VALUE;
+        for (int end = 0; end < k; end++) {
+            if (end - begin + 1 == k) {
+                result = Math.max(result, windowState);
+                windowState -= nums[begin];
+                begin++;
+            }
         }
-        sum = temp;
-
-        while (end < nums.length) {
-            temp += nums[end]-nums[end-k];
-            end++;
-            sum = Math.max(sum, temp);
-        }
-        return sum / k;
+        return result / k;
     }
 }
