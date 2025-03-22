@@ -1,7 +1,7 @@
 public class DesignHashMap706 {
 
     class MyHashMap {
-        private LinkedList[] buckets; // Массив бакетов как поле класса
+        private LinkedList[] buckets;
         private int size = 991;
 
         public class Node {
@@ -49,7 +49,7 @@ public class DesignHashMap706 {
                 Node current = head;
                 while (current.next != null) {
                     if (current.next.key == key) {
-                        current.next = current.next.next; // Удаляем узел
+                        current.next = current.next.next; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
                         return;
                     }
                     current = current.next;
